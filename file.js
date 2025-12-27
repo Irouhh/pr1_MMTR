@@ -14,7 +14,7 @@ console.log('Задание 1. Ответ: ', z1(6));
 
 function z2(string) {
     
-    let words = string.split(' ');
+    const words = string.split(' ');
     let maxWord = ' ';
 
     for (const word of words) {
@@ -51,7 +51,7 @@ console.log('Задание 3. Ответ: ', z3([[1, 2, 3], [4, 5], [6, 7, 8, 9
 function z4(string, a) {
 
     if (string.length > a) {
-        let newString = string.slice(0, a) + '...';
+        const newString = string.slice(0, a) + '...';
         return newString;
     }
 }
