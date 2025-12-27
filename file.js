@@ -23,7 +23,7 @@ function z2(string) {
         }
     }
 
-    return maxWord;
+    return maxWord.length;
 }
 
 console.log('Задание 2. Ответ: ', z2('Я в своем познании настолько преисполнился')); 
