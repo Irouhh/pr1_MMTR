@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация и регистрация</title>
+    <link rel="stylesheet" href="auth.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrap">
+        <form id="loginForm" action="">
+            <h1>Вход</h1>
+        <div class="input-text">
+            <input type="text" placeholder="Логин" required>
+            <i class='bx bx-user'></i>
+        </div>
+        <div class="input-text">
+            <input type="password" placeholder="Пароль" required>
+            <i class='bx bxs-key' ></i>
+        </div>
+        
+        <button type="submit" class="btn-login">Войти</button>
+        
+        <div class="reg">
+            <p>Нет аккаунта? <a href="#" onclick="showRegister()">Зарегистрируйтесь</a></p>
+        </div>
+        </form>
+
+        <form id="registerForm" class="hide" action="">
+            <h1>Регистрация</h1>
+        <div class="input-text">
+            <input type="text" placeholder="Логин" required>
+            <i class='bx bx-user'></i>
+        </div>
+
+        <div class="input-text">
+            <input type="email" placeholder="Email адрес" required>
+            <i class='bx bx-envelope'></i>
+        </div> 
+        
+        <div class="input-text">
+            <input type="password" placeholder="Пароль" required>
+            <i class='bx bxs-key' ></i>
+        </div> 
+
+        <button type="submit" class="btn-login">Зарегистрироваться</button>
+        
+        <div class="log">
+            <p>Уже есть аккаунт? <a href="#" onclick="showLogin()">Войдите</a></p>
+        </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
