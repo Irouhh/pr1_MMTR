@@ -23,7 +23,7 @@
                 <form id="createBoard" class="hide" action="/boards/boards.html">
                     <div class="input-text">
                         <h2>Название доски <i class='bx bxs-up-arrow'></i></h2>
-                        <input type="text" id="boarName" placeholder="Введите название...">
+                        <input type="text" id="boardName" placeholder="Введите название...">
                     </div>
 
                     <div class="form-buttons">
@@ -37,15 +37,33 @@
                 <div class="existBoards">
                     <h3>Мои доски</h3>
                     <div id="boardsList"></div>
-                    <button type="button" class="btn-move" onclick="window.location.href='/my_board/my_board.html'">Доска #1</button>
-                    <button type="button" class="btn-move-repeat" >Доска #2</button>
-                    <button type="button" class="btn-move-repeat" >Доска #3</button>
+                    <button type="button" class="btn-move" onclick="window.location.href='/my_board/my_board.html'">
+                        Доска #1
+                        <div class="board-btn">
+                            <i class='bx bx-edit'></i>
+                            <i class='bx bx-trash'></i>
+                        </div>
+                    </button>
+                    
+                    <button type="button" class="btn-move-repeat">
+                        Доска #2
+                        <div class="board-btn">
+                            <i class='bx bx-edit'></i>
+                            <i class='bx bx-trash'></i>
+                        </div>
+                    </button>
+                    
+                    <button type="button" class="btn-move-repeat">
+                        Доска #3
+                        <div class="board-btn">
+                            <i class='bx bx-edit'></i>
+                            <i class='bx bx-trash'></i>
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
     </main>
-
     <script src="/boards/script.js"></script>
-
 </body>
 </html>

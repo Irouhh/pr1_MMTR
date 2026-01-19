@@ -150,11 +150,19 @@ body {
     text-align: center;
 }
 
-#boardsList {
+.board-btn {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center; 
+    gap: 10px;
+    margin-left: auto;
+    padding-left: 15px;
+}
+
+.board-btn i {
+    color: #99744a;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+    padding: 2px;
 }
 
 .btn-move, .btn-move-repeat {
@@ -170,7 +178,7 @@ body {
     font-weight: 600;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin: 10px;
     text-decoration: none;
 }

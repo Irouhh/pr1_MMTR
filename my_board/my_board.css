@@ -244,20 +244,56 @@ body {
     border-color: #8c9657;
 }
 
-.add-card-btn {
-    background-color: #f0e5c7; 
-    color: #99744a;
-    border: 2px solid #d4b798;
-    border-radius: 8px;
-    padding: 12px;
-    cursor: pointer;
-    font-size: 14px;
-    text-align: left;
-    font-weight: 500;
+.list-operation {
+    display: flex;
+    gap: 8px;
+    align-items: center;
 }
 
-.add-card-btn:hover {
-    background-color: #e8d9b5;
-    color: #473f34; 
-    border-color: #8c9657;
+.list-operation i {
+    color: #99744a;
+    font-size: 18px;
+}
+
+.task-operation {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.task-operation i {
+    color: #99744a;
+    font-size: 16px;
+    background: #f0e5c7;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.create-task-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 2px;
+    align-items: center;
+}
+
+.task-input {
+    padding: 10px;
+    border: 2px solid #f0e5c7;
+    border-radius: 8px;
+    background: white;
+    color: #473f34;
+    font-size: 14px;
+    outline: none;
+}
+
+.add-task-btn {
+    background-color: #8c9657;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    border: 2px solid #8c9657;
 }
