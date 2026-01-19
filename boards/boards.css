@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #f0e5c7;
+    padding-top: 120px;
+}
+
+.head {
+    background-color: #404936;
+    padding: 15px 30px;
+    text-align: center;
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    border-radius: 40px;
+}
+
+.header-link i {
+    font-size: 32px;
+    color: #f0e5c7;
+}
+
+.wrap {
+    max-width: 1200px;
+    padding: 30px 20px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin: auto;
+}
+
+.left-column {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+}
+
+.btn-click {
+    background-color: #8c9657;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.btn-click:hover {
+    background-color: #7a8450;
+}
+
+#createBoard {
+    background-color: #faf6f0;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    width: 100%;
+    border: 2px solid #7a8450;
+}
+
+#createBoard.hide {
+    display: none;
+}
+
+#createBoard h2 {
+    color: #473f34;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+#createBoard i {
+    color: #8c9657;
+    font-size: 22px;
+    float: right;
+}
+
+#createBoard input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 2px solid #8c9657; 
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #473f34;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: right;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btn-cancel, .btn-save {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.btn-cancel {
+    background-color: #99744a;
+    color: white;
+}
+
+.btn-cancel:hover {
+    background-color: #8a6842;
+}
+
+.btn-save {
+    background-color: #8c9657; 
+    color: white;
+}
+
+.btn-save:hover {
+    background-color: #7a8450;
+}
+
+.right-column {
+    flex: 1;
+    min-width: 350px;
+    background-color: #404936;
+    border-radius: 12px;
+    padding: 30px;
+}
+
+.existBoards h3 {
+    color: #f0e5c7;
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+}
+
+#boardsList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center; 
+}
+
+.btn-move, .btn-move-repeat {
+    width: 100%;
+    max-width: 500px;
+    background-color: #f0e5c7; 
+    color: #473f34;
+    padding: 20px;
+    border: 2px solid #8c9657;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.btn-move:hover, .btn-move-repeat:hover {
+    background-color: #e8d9b5;
+}

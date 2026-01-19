@@ -9,93 +9,91 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-color: #abc4c5;
+    background-color: #f0e5c7;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .wrap {
     width: 380px;
     padding: 25px;
     background-color: #ffffff;
-    border-radius: 30px;
+    border-radius: 15px;
+    border: 2px solid #C19C6F;
 }
 
 .wrap h1 {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 26px;
-    color: #b9bebe;
-    font-weight: 800;
+    font-size: 24px;
+    color: #473f34;
+    font-weight: 600;
 }
 
 .input-text {
     position: relative;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .input-text input {
     width: 100%;
-    height: 38px;
-    padding: 0 35px 0 40px; 
-    border-radius: 20px;
-    border: 0.5px solid #cacac6;
+    height: 42px;
+    padding: 20px 40px; 
+    border-radius: 10px;
+    border: 2px solid #d4b798;
     font-size: 14px;
-    box-sizing: border-box; 
     outline: none;
+    background-color: #faf6f0;
+}
+
+.input-text input:focus {
+    border-color: #8c9657;
 }
 
 .input-text i {
     position: absolute;
     left: 15px; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    color: #5f5c5c;
-    font-weight: 700;
+    top: 14px; 
+    color: #99744a;
+    font-weight: 600;
 }
 
 .btn-login {
     width: 100%;
-    height: 38px;
-    background-color: #abc4c5;
+    height: 42px;
+    background-color: #8c9657;
     border: none;
-    border-radius: 20px;
+    border-radius: 8px;
     color: white;
     font-size: 15px;
     cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s ease;
+    font-weight: 600;
 }
 
 .btn-login:hover {
-    background-color: #8fb2b3;
-}
-
-.btn-login:active {
-    transform: scale(0.98);
+    background-color: #7a8450;
 }
 
 .hide {
     display: none;
 }
 
-.reg {
-    margin-top: 15px;
+.reg, .log {
+    margin-top: 20px;
     text-align: center;
     font-size: 14px;
+    color: #666;
 }
 
-.reg a {
-    color: #789e9e;
+.reg a, .log a {
+    color: #c19c6f;
     text-decoration: none;
+    font-weight: 600;
 }
 
-.log {
-    margin-top: 15px;
-    text-align: center;
-    font-size: 14px;
-}
-
-.log a {
-    color: #789e9e;
-    text-decoration: none;
+.reg a:hover, .log a:hover {
+    color: #8c9657;
 }

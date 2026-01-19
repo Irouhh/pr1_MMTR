@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя доска</title>
+    <link rel="stylesheet" href="/my_board/my_board.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="head">
+        <a href="/boards/boards.html" class="header-link"><i class='bx bx-home-smile'></i></a>
+    </header>
+    
+    <main>
+        <div class="wrap">
+            <div class="board-item">
+                <h1>Доска #1</h1>
+                
+                <div id="newList" class="newLists">
+                    <button type="button" class="btn-click" onclick="openNewList()">Добавить список<i class='bx bxs-down-arrow'></i></button>
+                </div>
+
+                <div class="lists">
+                    <form id="createList" class="hide" action="/my_board/my_board.html">
+                        <div class="input-text">
+                            <h2>Название списка <i class='bx bxs-up-arrow'></i></h2>
+                            <input type="text" id="listName" placeholder="Введите название...">
+                        </div>
+                        
+                        <div class="form-buttons">
+                            <button type="button" class="btn-cancel" onclick="cancelNewList()">Отмена</button>
+                            <button type="button" class="btn-save" onclick="saveList()">Сохранить</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="exist-lists">
+                    <div class="list-container">
+                        <div class="list-head">
+                            <h2>Список 1</h2><i class='bx bx-dots-vertical-rounded'></i>
+                        </div>
+
+                        <div class="list-items">
+                            <div class="list-item">
+                                <span>Элемент списка 1</span><i class='bx bx-checkbox'></i>
+                            </div>
+
+                            <div class="list-item-demo">
+                                <span>Элемент списка 2</span><i class='bx bx-checkbox-checked'></i>
+                            </div>
+                            <button class="add-card-btn">Добавить задачу</button>
+                        </div>
+                    </div>
+
+                    <div class="list-container">
+                        <div class="list-head">
+                            <h2>Список 2</h2><i class='bx bx-dots-vertical-rounded'></i>
+                        </div>
+                        
+                        <div class="list-items">
+                            <div class="list-item">
+                                <span>Элемент списка 1</span><i class='bx bx-checkbox'></i>
+                            </div>
+                            <button class="add-card-btn">Добавить задачу</button>
+                        </div>
+                    </div>
+
+                    <div class="list-container">
+                        <div class="list-head">
+                            <h2>Список 3</h2><i class='bx bx-dots-vertical-rounded'></i>
+                        </div>
+                        <div class="list-items">
+                            <button class="add-card-btn">Добавить задачу</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/my_board/script.js"></script>
+</body>
+</html>

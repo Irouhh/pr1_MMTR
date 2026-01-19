@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="/boards/boards.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header class="head">
+        <a href="/boards/boards.html" class="header-link"><i class='bx bx-home-smile' ></i></a>
+    </header>
+    
+    <main>
+        <div class="wrap">
+            <div class="left-column">
+
+                <div id="newBoard" class="newBoards">
+                    <button type="button" class="btn-click" onclick="openNewBoard()">Новая доска<i class='bx bxs-down-arrow'></i></button>
+                </div>
+                
+                <form id="createBoard" class="hide" action="/boards/boards.html">
+                    <div class="input-text">
+                        <h2>Название доски <i class='bx bxs-up-arrow'></i></h2>
+                        <input type="text" id="boarName" placeholder="Введите название...">
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="btn-cancel" onclick="cancelNewBoard()">Отмена</button>
+                        <button type="button" class="btn-save" onclick="saveBoard()">Сохранить</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="right-column">
+                <div class="existBoards">
+                    <h3>Мои доски</h3>
+                    <div id="boardsList"></div>
+                    <button type="button" class="btn-move" onclick="window.location.href='/my_board/my_board.html'">Доска #1</button>
+                    <button type="button" class="btn-move-repeat" >Доска #2</button>
+                    <button type="button" class="btn-move-repeat" >Доска #3</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/boards/script.js"></script>
+
+</body>
+</html>
