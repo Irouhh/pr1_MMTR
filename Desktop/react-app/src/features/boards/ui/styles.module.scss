@@ -1,0 +1,160 @@
+.wrap {
+    max-width: 1200px;
+    padding: 130px 20px 30px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin: 0px 350px;
+}
+
+.leftColumn {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+}
+
+.btnClick {
+    background-color: #8c9657;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.btnClick:hover {
+    background-color: #7a8450;
+}
+
+.createBoard {
+    margin-top: 10px;
+    background-color: #faf6f0;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    width: 360px;
+    height: 150px;
+    border: 2px solid #7a8450;
+}
+
+.createBoard.hide {
+    display: none;
+}
+
+.createBoard h2 {
+    color: #473f34;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.createBoard i {
+    color: #8c9657;
+    font-size: 22px;
+    float: right;
+}
+
+.createBoard input {
+    width: 330px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 2px solid #8c9657;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #473f34;
+}
+
+.formButtons {
+    display: flex;
+    justify-content: right;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btnCancel, .btnSave {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.btnCancel {
+    background-color: #99744a;
+    color: white;
+}
+
+.btnCancel:hover {
+    background-color: #8a6842;
+}
+
+.btnSave {
+    background-color: #8c9657;
+    color: white;
+}
+
+.btnSave:hover {
+    background-color: #7a8450;
+}
+
+.rightColumn {
+    flex: 1;
+    min-width: 350px;
+    background-color: #404936;
+    border-radius: 12px;
+    padding: 30px;
+}
+
+.existBoards h3 {
+    color: #f0e5c7;
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.boardBtn {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+    padding-left: 15px;
+}
+
+.boardBtn i {
+    color: #99744a;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.btnMove, .btnMoveRepeat {
+    width: 100%;
+    max-width: 500px;
+    background-color: #f0e5c7;
+    color: #473f34;
+    padding: 20px;
+    border: 2px solid #8c9657;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    text-decoration: none;
+    border: none;
+}
+
+.btnMove:hover, .btnMoveRepeat:hover {
+    background-color: #e8d9b5;
+}

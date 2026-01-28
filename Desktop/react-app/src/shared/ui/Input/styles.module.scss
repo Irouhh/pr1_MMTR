@@ -1,0 +1,27 @@
+.inputText {
+    position: relative;
+    margin-bottom: 20px;
+    
+    input {
+        width: 300px;
+        height: 5px;
+        padding: 20px 40px;
+        border-radius: 10px;
+        border: 2px solid #d4b798;
+        font-size: 14px;
+        outline: none;
+        background-color: #faf6f0;
+    }
+    
+    input:focus {
+        border-color: #8c9657;
+    }
+    
+    i {
+        position: absolute;
+        left: 15px;
+        top: 17px;
+        color: #99744a;
+        font-weight: 600;
+    }
+}
