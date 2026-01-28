@@ -1,0 +1,1 @@
+export { MyBoard } from './myBoard';

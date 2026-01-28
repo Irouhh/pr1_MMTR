@@ -1,0 +1,19 @@
+.head {
+    background-color: #404936;
+    padding: 15px 30px;
+    text-align: center;
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    border-radius: 40px;
+    z-index: 100;
+}
+
+.headerLink i {
+    font-size: 32px;
+    color: #f0e5c7;
+}

@@ -1,0 +1,237 @@
+.wrap {
+    max-width: 1200px;
+    padding: 130px 20px 30px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin: 0px 350px;
+}
+
+.boardItem h1 {
+    color: #473f34;
+    font-size: 28px;
+    text-align: center;
+    font-weight: 700;
+    display: block;
+    width: 100%;
+    margin-left: 110px;
+    margin-bottom: 15px;
+}
+
+.newLists {
+    margin-bottom: 20px;
+}
+
+.createList {
+    background-color: #faf6f0;
+    border-radius: 15px;
+    padding: 25px;
+    width: 400px;
+    border: 2px solid #c19c6f;
+}
+
+.createList.hide {
+    display: none;
+}
+
+.inputText h2 {
+    color: #473f34;
+    margin-bottom: 12px;
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.inputText h2 i {
+    color: #99744a;
+}
+
+.inputText input {
+    width: 360px;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid #c19c6f;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #ffffff;
+    color: #473f34;
+}
+
+.inputText input:focus {
+    border-color: #8c9657;
+    outline: none;
+}
+
+.formButtons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btnSave {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btnSave {
+    background-color: #8c9657;
+    color: white;
+}
+
+.btnSave:hover {
+    background-color: #7a8450;
+}
+
+.existLists {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.listContainer {
+    background-color: #ffffff;
+    border-radius: 12px;
+    width: 280px;
+    padding: 15px;
+    border: 2px solid #c19c6f;
+}
+
+.listHead {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e8d9b5;
+}
+
+.listHead h2 {
+    color: #473f34;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.listHead i {
+    color: #99744a;
+    cursor: pointer;
+}
+
+.listItems {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.listItem {
+    background-color: #faf6f0;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #e8d9b5;
+}
+
+.listItem:hover {
+    background-color: #f5f0e6;
+}
+
+.listItem span {
+    color: #473f34;
+    font-size: 14px;
+}
+
+.listItemDemo {
+    background-color: #f5f0e6;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #8c9657;
+}
+
+.listItemDemo span {
+    text-decoration: line-through;
+    color: #99744a;
+    font-size: 14px;
+}
+
+.listItemDemo i {
+    color: #8c9657;
+    font-size: 16px;
+    background-color: #f0e5c7;
+    border-radius: 4px;
+    border: 2px solid #f0e5c7;
+    cursor: pointer;
+}
+
+.listItemDemo i:hover {
+    color: #99744a;
+    border-color: #99744a;
+}
+
+.listItem i {
+    color: #99744a;
+    font-size: 16px;
+    background-color: #f0e5c7;
+    border-radius: 4px;
+    border: 2px solid #f0e5c7;
+    cursor: pointer;
+}
+
+.listItem i:hover {
+    color: #8c9657;
+    border-color: #8c9657;
+}
+
+.listOperation {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.listOperation i {
+    color: #99744a;
+    font-size: 18px;
+}
+
+.createTaskForm {
+    display: flex;
+    gap: 8px;
+    margin-top: 2px;
+    align-items: center;
+}
+
+.taskInput {
+    padding: 10px;
+    border: 2px solid #f0e5c7;
+    border-radius: 8px;
+    background: white;
+    color: #473f34;
+    font-size: 14px;
+    outline: none;
+    width: auto !important;
+    padding: 10px !important;
+    height: auto !important;
+}
+
+.addTaskBtn {
+    background-color: #8c9657;
+    color: white;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    border: 2px solid #8c9657;
+    margin-top: -18px;
+    padding: 2px 2px;
+}
