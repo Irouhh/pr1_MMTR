@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Header } from '../../../shared/ui';
 import { GreenButton, BrownButton, Button } from '../../../shared/ui/Button';
-import { ICONS } from '../../../shared/ui/Icons';
+import { ICONS } from '../../../shared/const';
 import { Input } from '../../../shared/ui/Input';
 
 import styles from './styles.module.scss';

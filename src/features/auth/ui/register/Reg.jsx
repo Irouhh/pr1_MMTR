@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import { URL_ENUM } from "../../../../shared/ui/URL/URL_ENUM";
-import { ICONS } from '../../../../shared/ui/Icons/Icons';
+import { URL_ENUM, ICONS } from '../../../../shared/const';
 import { Input } from '../../../../shared/ui/Input';
 
 import styles from './styles.module.scss';

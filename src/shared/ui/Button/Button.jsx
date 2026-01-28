@@ -1,3 +1,5 @@
+import cn from 'classnames';
+
 import styles from './styles.module.scss';
 
 export const GreenButton = ({children, onClick, type = 'button'}) => {
@@ -18,7 +20,7 @@ export const BrownButton = ({children, onClick, type = 'button'}) => {
 
 export const Button = ({children, type = 'button', className = ''}) => {
     return (
-        <button type={type} className={styles.button + ' ' + className}>
+        <button type={type} className={cn(styles.button, className)}>
             {children}
         </button>
     );
