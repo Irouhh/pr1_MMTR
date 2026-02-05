@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import { URL_ENUM, ICONS } from '../../../../shared/const';
 import { Input } from '../../../../shared/ui/Input';
 import { registerUser } from '../../../../entities/user/api/regApi';
-import { ButtonLogin } from '../../../../shared/ui/Button';
+import { Button } from '../../../../shared/ui/Button';
 
 import styles from './styles.module.scss';
 
@@ -14,57 +14,66 @@ export const Reg = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const { error } = useSelector(state => state.user);
-
-    const [login, setLogin] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-
-    let errorInForm = null;
-
-    if (error) {
-        errorInForm = <div className={styles.error}>{error}</div>;
-    }
+    const [FormError, setFormError] = useState('');
+    const [form, setForm] = useState({
+        login: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+    });
 
     const onSubmit = (e) => {
         e.preventDefault();
+        const { email, password, login } = form;
         dispatch(registerUser({ email, password, name: login }))
         .unwrap()
-        .then(() => {
-            navigate(URL_ENUM.BOARDS);
-        })
-        .catch((error) => {
-            console.log('', error);
+        .then(() => navigate(URL_ENUM.BOARDS))
+        .catch(setFormError);
+    }
+
+    const updateForm = (e) => {
+        const { name, value } = e.target;
+
+        setForm(oldForm => {
+            const newForm ={ 
+                login: oldForm.login,
+                email: oldForm.email,
+                password: oldForm.password,
+                confirmPassword: oldForm.confirmPassword,
+            };
+            
+            newForm[name] = value;
+            return newForm;
         });
+
     }
     
     return (
         <main>
             <div className={styles.wrap}>
-                <form id='registerForm' onSubmit={(e) => {onSubmit(e)}}>
+                <form id='registerForm' onSubmit={onSubmit}>
                     <h1>Регистрация</h1>
 
-                    {errorInForm}
+                    {FormError && <div className={styles.error}>{FormError}</div>}
 
-                    <Input type='text' value={login}
-                    onChange={(e) => setLogin(e.target.value)}
+                    <Input type='text' value={form.login} name = 'login'
+                    onChange={updateForm}
                     placeholder='Логин' icon={ICONS.USER}/>
                     
-                    <Input type='email' value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    <Input type='email' value={form.email} name = 'email'
+                    onChange={updateForm}
                     placeholder='Email адрес' icon={ICONS.EMAIL}/>
                     
-                    <Input type='password' value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    <Input type='password' value={form.password} name = 'password'
+                    onChange={updateForm}
                     placeholder='Пароль' icon={ICONS.PASSWORD}/>
         
-                    <Input type='password' value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    <Input type='password' value={form.confirmPassword} name = 'confirmPassword'
+                    onChange={updateForm}
                     placeholder='Повторите пароль' icon={ICONS.ROTATE}/>
                     
-                    <ButtonLogin type='submit' className={styles.btnLogin}
-                    >Зарегистрироваться</ButtonLogin>
+                    <Button type='submit' className={styles.btnLogin}
+                    >Зарегистрироваться</Button>
                     
                     <div className={styles.log}>
                         <p>Уже есть аккаунт? <Link to={URL_ENUM.ROOT} className={styles.linkHover}>Войдите</Link></p>

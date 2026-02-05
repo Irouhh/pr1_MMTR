@@ -12,16 +12,6 @@ export const loginUser = createAsyncThunk ('sliceUser/loginUser',
         return response.data;
 
     } catch (error) {
-        if (error.response) {
-            if (error.response.status === 400) {
-                return rejectWithValue('Некорректный email или пароль (содержит от 4 до 16 символов)');
-            }
-            
-            if (error.response.status === 401) {
-                return rejectWithValue('Неверный email или пароль');
-            }
-        }
-        
-        return rejectWithValue('Не удалось авторизоваться');
+        return rejectWithValue(error.response?.data?.message || 'Ошибка');
     }
 });

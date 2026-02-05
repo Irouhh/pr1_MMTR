@@ -1,1 +1,1 @@
-export { Button, GreenButton, BrownButton, ButtonLogin } from './Button';
+export { Button, GreenButton, BrownButton } from './Button';
