@@ -12,16 +12,6 @@ export const registerUser = createAsyncThunk ('sliceUser/registerUser',
         return response.data;
 
     } catch (error) {
-        if (error.response) {
-            if (error.response.status === 400) {
-                return rejectWithValue('Пароль должен содержать минимум 4 символа, включая буквы и цифры');
-            }
-            
-            if (error.response.status === 409) {
-                return rejectWithValue('Email уже занят');
-            }
-        }
-        
-        return rejectWithValue('Не удалось зарегистрироваться');
+        return rejectWithValue(error.response?.data?.message || 'Ошибка');
     }
 })
