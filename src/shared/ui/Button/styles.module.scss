@@ -42,3 +42,23 @@
 .Button:hover {
     background-color: #7a8450;
 }
+
+.ButtonLogin {
+    width: 100%;
+    height: 42px;
+    background-color: #8c9657;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.ButtonLogin:hover {
+    background-color: #7a8450;
+    text-decoration: none;
+}

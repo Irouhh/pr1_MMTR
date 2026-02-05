@@ -25,3 +25,11 @@ export const Button = ({children, type = 'button', className = ''}) => {
         </button>
     );
 };
+
+export const ButtonLogin = ({children, type = 'type', className = ''}) => {
+    return (
+        <button type={type} className={cn(styles.button, className)}>
+            {children}
+        </button>
+    );
+};
