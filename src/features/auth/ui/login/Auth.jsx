@@ -14,16 +14,28 @@ export const Auth = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [formError, setformError] = useState('');
+    const [form, setForm] = useState({
+        email: '',
+        password: ''
+    });
 
     const onSubmit = (e) => {
         e.preventDefault();
+        const { email, password } = form;
         dispatch(loginUser({ email, password }))
         .unwrap()
         .then(() => navigate(URL_ENUM.BOARDS))
         .catch(setformError);
+    }
+
+    const updateForm = (e) => {
+        const { name, value } = e.target;
+        
+        setForm(oldForm => ({
+            ...oldForm,
+            [name]: value
+        }));
     }
 
     return (
@@ -34,12 +46,12 @@ export const Auth = () => {
 
                     {formError && <div className={styles.error}>{formError}</div>}
 
-                    <Input type='email' value = {email}
-                    onChange={(e) => setEmail(e.target.value)} 
+                    <Input type='email' value = {form.email} name= 'email'
+                    onChange={updateForm} 
                     placeholder='Email адрес' icon={ICONS.EMAIL}/>
                     
-                    <Input type='password' value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    <Input type='password' value={form.password} name= 'password'
+                    onChange={updateForm}
                     placeholder='Пароль' icon={ICONS.PASSWORD}/>
                     
                     <Button type='submit' className={styles.btnLogin}>Войти</Button>

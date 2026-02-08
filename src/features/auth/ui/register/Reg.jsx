@@ -14,7 +14,7 @@ export const Reg = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const [FormError, setFormError] = useState('');
+    const [formError, setformError] = useState('');
     const [form, setForm] = useState({
         login: '',
         email: '',
@@ -28,24 +28,16 @@ export const Reg = () => {
         dispatch(registerUser({ email, password, name: login }))
         .unwrap()
         .then(() => navigate(URL_ENUM.BOARDS))
-        .catch(setFormError);
+        .catch(setformError);
     }
 
     const updateForm = (e) => {
         const { name, value } = e.target;
-
-        setForm(oldForm => {
-            const newForm ={ 
-                login: oldForm.login,
-                email: oldForm.email,
-                password: oldForm.password,
-                confirmPassword: oldForm.confirmPassword,
-            };
-            
-            newForm[name] = value;
-            return newForm;
-        });
-
+        
+        setForm(oldForm => ({
+            ...oldForm,
+            [name]: value,
+        }));
     }
     
     return (
@@ -54,7 +46,7 @@ export const Reg = () => {
                 <form id='registerForm' onSubmit={onSubmit}>
                     <h1>Регистрация</h1>
 
-                    {FormError && <div className={styles.error}>{FormError}</div>}
+                    {formError && <div className={styles.error}>{formError}</div>}
 
                     <Input type='text' value={form.login} name = 'login'
                     onChange={updateForm}
