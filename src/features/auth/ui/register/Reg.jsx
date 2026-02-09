@@ -50,19 +50,19 @@ export const Reg = () => {
 
                     <Input type='text' value={form.login} name = 'login'
                     onChange={updateForm}
-                    placeholder='Логин' icon={ICONS.USER}/>
+                    placeholder='Логин' icon={ICONS.USER} required/>
                     
                     <Input type='email' value={form.email} name = 'email'
                     onChange={updateForm}
-                    placeholder='Email адрес' icon={ICONS.EMAIL}/>
+                    placeholder='Email адрес' icon={ICONS.EMAIL} required/>
                     
                     <Input type='password' value={form.password} name = 'password'
                     onChange={updateForm}
-                    placeholder='Пароль' icon={ICONS.PASSWORD}/>
+                    placeholder='Пароль' icon={ICONS.PASSWORD} required/>
         
                     <Input type='password' value={form.confirmPassword} name = 'confirmPassword'
                     onChange={updateForm}
-                    placeholder='Повторите пароль' icon={ICONS.ROTATE}/>
+                    placeholder='Повторите пароль' icon={ICONS.ROTATE} required/>
                     
                     <Button type='submit' className={styles.btnLogin}
                     >Зарегистрироваться</Button>

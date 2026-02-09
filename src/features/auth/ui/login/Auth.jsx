@@ -48,11 +48,11 @@ export const Auth = () => {
 
                     <Input type='email' value = {form.email} name= 'email'
                     onChange={updateForm} 
-                    placeholder='Email адрес' icon={ICONS.EMAIL}/>
+                    placeholder='Email адрес' icon={ICONS.EMAIL} required />
                     
                     <Input type='password' value={form.password} name= 'password'
                     onChange={updateForm}
-                    placeholder='Пароль' icon={ICONS.PASSWORD}/>
+                    placeholder='Пароль' icon={ICONS.PASSWORD} required/>
                     
                     <Button type='submit' className={styles.btnLogin}>Войти</Button>
                     
