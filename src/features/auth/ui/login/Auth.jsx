@@ -1,10 +1,50 @@
 import { Link } from 'react-router-dom';
 import { URL_ENUM, ICONS } from '../../../../shared/const';
 import { Input } from '../../../../shared/ui/Input';
+<<<<<<< HEAD
+=======
+import { loginUser } from '../../../../entities/user/api/loginApi';
+import { Button } from '../../../../shared/ui/Button';
+import { getBoards } from '../../../../entities/boards/api/boardsApi';
+>>>>>>> 26d95e1 (доски)
 
 import styles from './styles.module.scss';
 
 export const Auth = () => {
+<<<<<<< HEAD
+=======
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const [formError, setformError] = useState('');
+    const [form, setForm] = useState({
+        email: '',
+        password: ''
+    });
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const { email, password } = form;
+        dispatch(loginUser({ email, password }))
+        .unwrap()
+        .then(() => { 
+            navigate(URL_ENUM.BOARDS)
+            dispatch(getBoards());
+        })
+        .catch(setformError);
+    }
+
+    const updateForm = (e) => {
+        const { name, value } = e.target;
+        
+        setForm(oldForm => ({
+            ...oldForm,
+            [name]: value
+        }));
+    }
+
+>>>>>>> 26d95e1 (доски)
     return (
         <main>
             <div className={styles.wrap}>
