@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link} from 'react-router-dom';
 
 import { Header } from '../../../shared/ui';
@@ -15,7 +15,7 @@ export const Boards = () => {
     const { boards } = useSelector(state => state.board);
 
     const [showCreateBoard, setShowCreateBoard] = useState(false);
-    const [formError, setformError] = useState('');
+    const [formError, setFormError] = useState('');
     const [editId, setEditId] = useState(null);
     const [form, setForm] = useState({ boardName: '' });
 
@@ -46,7 +46,7 @@ export const Boards = () => {
             setForm({ boardName: '' });
             setShowCreateBoard(false);
         })
-        .catch(setformError);
+        .catch(setFormError);
     }
 
     const handleEditIcon = (board, e) => {
@@ -65,7 +65,7 @@ export const Boards = () => {
             setForm({ boardName: '' });
             setShowCreateBoard(false);
         })
-        .catch(setformError);
+        .catch(setFormError);
     }
 
     const handleDeleteIcon = (boardId, e) => {
@@ -76,20 +76,24 @@ export const Boards = () => {
         .then(() => { 
             dispatch(getBoards());
         })
-        .catch(setformError);
+        .catch(setFormError);
     }
 
-    const handleCreateBoardform = () => {
+    const handleCreateBoardForm = () => {
         setShowCreateBoard(true);
         setEditId(null);
         setForm({ boardName: '' });
     };
 
-    const handleCancelform = () => {
+    const handleCancelForm = () => {
         setShowCreateBoard(false);
         setEditId(null);
         setForm({ boardName: '' });
     };
+
+    useEffect(() => {
+        dispatch(getBoards())
+    }, [])
 
     return (
         <>
@@ -97,7 +101,7 @@ export const Boards = () => {
             <main>
                 <div className={styles.wrap}>
                     <div className={styles.leftColumn}>
-                        <GreenButton onClick={handleCreateBoardform}>
+                        <GreenButton onClick={handleCreateBoardForm}>
                             Новая доска <i className={ICONS.DOWN_ARROW}></i>
                         </GreenButton>
                         
@@ -111,7 +115,7 @@ export const Boards = () => {
                                 onChange={updateForm} placeholder="Введите название..." required/>
                                 
                                 <div className={styles.formButtons}>
-                                    <BrownButton onClick={handleCancelform}> Отмена </BrownButton>
+                                    <BrownButton onClick={handleCancelForm}> Отмена </BrownButton>
                                     <Button type='submit' className={styles.btnSave}> Сохранить </Button>
                                 </div>
                             </form>
@@ -124,7 +128,7 @@ export const Boards = () => {
 
                             <div id="boardsList">
                                 {boards.map(board => (
-                                    <Link key={board.id} to={'/board/' + board.id} 
+                                    <Link key={board.id} to={'/board/' + board.id + '?name=' + board.name} 
                                     className={styles.btnMove}>
                                         
                                         {board.name}

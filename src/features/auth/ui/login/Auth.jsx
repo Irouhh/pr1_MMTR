@@ -5,8 +5,11 @@ import { Input } from '../../../../shared/ui/Input';
 =======
 import { loginUser } from '../../../../entities/user/api/loginApi';
 import { Button } from '../../../../shared/ui/Button';
+<<<<<<< HEAD
 import { getBoards } from '../../../../entities/boards/api/boardsApi';
 >>>>>>> 26d95e1 (доски)
+=======
+>>>>>>> d2cdad7 (бек: листы, борды, таски)
 
 import styles from './styles.module.scss';
 
@@ -28,10 +31,7 @@ export const Auth = () => {
         const { email, password } = form;
         dispatch(loginUser({ email, password }))
         .unwrap()
-        .then(() => { 
-            navigate(URL_ENUM.BOARDS)
-            dispatch(getBoards());
-        })
+        .then(navigate(URL_ENUM.BOARDS))
         .catch(setformError);
     }
 
