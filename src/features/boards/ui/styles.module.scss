@@ -32,14 +32,12 @@
 }
 
 .createBoard {
-    margin-top: 10px;
     background-color: #faf6f0;
     border-radius: 15px;
     padding: 25px;
-    margin-bottom: 25px;
-    width: 360px;
-    height: 150px;
-    border: 2px solid #7a8450;
+    width: 400px;
+    border: 2px solid #c19c6f;
+    margin-top: 10px;
 }
 
 .createBoard.hide {
@@ -73,30 +71,17 @@
 
 .formButtons {
     display: flex;
-    justify-content: right;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.btnCancel, .btnSave {
-    padding: 10px 25px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.btnCancel {
-    background-color: #99744a;
-    color: white;
-}
-
-.btnCancel:hover {
-    background-color: #8a6842;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
 .btnSave {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
     background-color: #8c9657;
     color: white;
 }

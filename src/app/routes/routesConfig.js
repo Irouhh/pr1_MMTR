@@ -23,7 +23,7 @@ export const routesConfig = createBrowserRouter([
         element: <MainPage />
     },
     {
-        path: URL_ENUM.BOARD + '/:id',
+        path: URL_ENUM.BOARD,
         element: <MyBoardPage />
     }
 ]);

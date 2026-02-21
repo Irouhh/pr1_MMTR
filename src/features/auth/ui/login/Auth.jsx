@@ -6,7 +6,6 @@ import { URL_ENUM, ICONS } from '../../../../shared/const';
 import { Input } from '../../../../shared/ui/Input';
 import { loginUser } from '../../../../entities/user/api/loginApi';
 import { Button } from '../../../../shared/ui/Button';
-import { getBoards } from '../../../../entities/boards/api/boardsApi';
 
 import styles from './styles.module.scss';
 
@@ -26,10 +25,7 @@ export const Auth = () => {
         const { email, password } = form;
         dispatch(loginUser({ email, password }))
         .unwrap()
-        .then(() => { 
-            navigate(URL_ENUM.BOARDS)
-            dispatch(getBoards());
-        })
+        .then(navigate(URL_ENUM.BOARDS))
         .catch(setformError);
     }
 
