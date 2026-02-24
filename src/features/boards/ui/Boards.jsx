@@ -4,7 +4,7 @@ import { Link} from 'react-router-dom';
 
 import { Header } from '../../../shared/ui';
 import { GreenButton, BrownButton, Button } from '../../../shared/ui/Button';
-import { ICONS} from '../../../shared/const';
+import { ICONS, URL_ENUM } from '../../../shared/const';
 import { Input } from '../../../shared/ui/Input';
 import { createBoard, deleteBoard, editBoard, getBoards } from '../../../entities/boards/api/boardsApi';
 
@@ -93,7 +93,7 @@ export const Boards = () => {
 
     useEffect(() => {
         dispatch(getBoards())
-    }, [])
+    }, [dispatch])
 
     return (
         <>
@@ -128,7 +128,7 @@ export const Boards = () => {
 
                             <div id="boardsList">
                                 {boards.map(board => (
-                                    <Link key={board.id} to={'/board/' + board.id + '?name=' + board.name} 
+                                    <Link key={board.id} to={URL_ENUM.BOARD + '/' + board.id + '/' + encodeURIComponent(board.name)} 
                                     className={styles.btnMove}>
                                         
                                         {board.name}

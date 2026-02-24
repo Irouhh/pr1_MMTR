@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Header } from '../../../shared/ui';
@@ -32,11 +32,8 @@ export const MyBoard = () => {
     const [editListId, setEditListId] = useState(null);
     const [formList, setFormList] = useState({ listName: '' });
     
-    const params = useParams();
-    const boardId = params.id;
-    const location = useLocation();
-
-    const boardNameAfterUrl = decodeURI(location.search.split('=').pop());
+    const { name = '', id: boardId } = useParams();
+    const boardNameAfterUrl = decodeURI(name);
 
     const onSubmitList = (e) => {
         e.preventDefault();
@@ -188,24 +185,6 @@ export const MyBoard = () => {
         .catch(setFormTaskError);
     };
 
-    const getActiveTaskIcon = (task) => {
-        if (task.isActive) {
-            return ( 
-            <>
-            <i className={ICONS.CHECKBOX} onClick={() => changeTask(task)}></i>
-            <span className={styles.taskName}>{task.name}</span>
-            </>
-            );
-        } else {
-            return (
-            <>
-            <i className={ICONS.CHECKBOX_CHECKED} onClick={() => changeTask(task)}></i>
-            <span className={styles.taskName} style={{textDecoration: 'line-through'}}>{task.name}</span>
-            </>
-            )
-        }
-    };
-
     useEffect(() => {
         if (lists) {
             for (const list of lists) {
@@ -281,9 +260,21 @@ export const MyBoard = () => {
                                                     );
                                                 }
 
+                                                let taskIcon;
+                                                let textStyle;
+                                                
+                                                if (task.isActive) {
+                                                    taskIcon = ICONS.CHECKBOX;
+                                                    textStyle = {};
+                                                } else {
+                                                    taskIcon = ICONS.CHECKBOX_CHECKED;
+                                                    textStyle = {textDecoration: 'line-through'};
+                                                }
+
                                                 return (
                                                     <div key={task.id} className={styles.taskItem}>
-                                                        {getActiveTaskIcon(task)}
+                                                        <i className={taskIcon} onClick={() => changeTask(task)}></i>
+                                                        <span className={styles.taskName} style={textStyle}>{task.name}</span>
 
                                                         <div className={styles.taskActions}>
                                                             <i className={ICONS.EDIT} onClick={(e) => handleEditIconTask(task, e)}></i>
