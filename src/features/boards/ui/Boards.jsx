@@ -128,7 +128,7 @@ export const Boards = () => {
 
                             <div id="boardsList">
                                 {boards.map(board => (
-                                    <Link key={board.id} to={URL_ENUM.BOARD + '/' + board.id + '/' + encodeURIComponent(board.name)} 
+                                    <Link key={board.id} to={`${URL_ENUM.BOARD}/${board.id}/${encodeURIComponent(board.name)}`} 
                                     className={styles.btnMove}>
                                         
                                         {board.name}

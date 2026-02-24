@@ -1,3 +1,4 @@
+import cx from 'classnames'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -185,6 +186,15 @@ export const MyBoard = () => {
         .catch(setFormTaskError);
     };
 
+    const handleCancelTaskForm = () => {
+        setEditTaskId(null);
+        setFormTask('');
+    };
+
+    const updateEditTaskForm = (e) => {
+        setFormTask(e.target.value);
+    };
+
     useEffect(() => {
         if (lists) {
             for (const list of lists) {
@@ -247,40 +257,29 @@ export const MyBoard = () => {
                                                     return (
                                                         <div key={task.id}>
                                                             <form className={styles.taskEditForm} onSubmit={onTaskEditSubmit}>
-                                                                <Input noWrapper value={formTask} onChange={(e) => setFormTask(e.target.value)}
+                                                                <Input noWrapper value={formTask} onChange={updateEditTaskForm} 
                                                                 className={styles.taskEditInput} required/>
-                                                                
+                                                
                                                                 <Button type="submit" className={styles.taskEditButton}>
                                                                     <i className={ICONS.CHECKBOX_CHECKED}></i>
                                                                 </Button>
                                                                 
-                                                                <i className={ICONS.CLOSE} onClick={() => setEditTaskId(null)}></i>
+                                                                <i className={ICONS.CLOSE} onClick={handleCancelTaskForm}></i>
                                                             </form>
                                                         </div>
                                                     );
                                                 }
 
-                                                let taskIcon;
-                                                let textStyle;
-                                                
-                                                if (task.isActive) {
-                                                    taskIcon = ICONS.CHECKBOX;
-                                                    textStyle = {};
-                                                } else {
-                                                    taskIcon = ICONS.CHECKBOX_CHECKED;
-                                                    textStyle = {textDecoration: 'line-through'};
-                                                }
-
                                                 return (
-                                                    <div key={task.id} className={styles.taskItem}>
-                                                        <i className={taskIcon} onClick={() => changeTask(task)}></i>
-                                                        <span className={styles.taskName} style={textStyle}>{task.name}</span>
-
-                                                        <div className={styles.taskActions}>
-                                                            <i className={ICONS.EDIT} onClick={(e) => handleEditIconTask(task, e)}></i>
-                                                            <i className={ICONS.TRASH} onClick={(e) => handleDeleteIconTask(list.id, task.id, e)}></i>
-                                                        </div>
+                                                <div key={task.id} className={styles.taskItem}>
+                                                    <i className={task.isActive ? ICONS.CHECKBOX : ICONS.CHECKBOX_CHECKED} onClick={() => changeTask(task)}></i>
+                                                    <span className={cx(styles.taskName, { [styles.lineThrough]: !task.isActive })}>{task.name}</span>
+                                                    
+                                                    <div className={styles.taskActions}>
+                                                        <i className={ICONS.EDIT} onClick={(e) => handleEditIconTask(task, e)}></i>
+                                                        <i className={ICONS.TRASH} onClick={(e) => handleDeleteIconTask(list.id, task.id, e)}></i>
                                                     </div>
+                                                </div>
                                                 );
                                             })
                                         }
