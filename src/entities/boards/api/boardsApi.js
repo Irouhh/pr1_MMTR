@@ -65,3 +65,19 @@ export const getBoards = createAsyncThunk('sliceBoards/getBoards',
         return rejectWithValue(error.response?.data?.message || 'Ошибка');
     }
 });
+
+export const reorderBoard = createAsyncThunk('sliceBoards/reorderBoard',
+    async ({ order, boardId }, thunkAPI) => {
+        const { rejectWithValue } = thunkAPI;
+        
+    try {
+        const response = await api.put('/board/reorderBoard', { boardId, order });
+        
+        return {
+            order, boardId, message: response.data.message
+        };
+        
+    } catch (error) {
+        return rejectWithValue(error.response?.data?.message || 'Ошибка');
+    }
+});

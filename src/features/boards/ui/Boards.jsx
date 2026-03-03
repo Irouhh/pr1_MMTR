@@ -1,19 +1,28 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { Link} from 'react-router-dom';
+import { SortDndBoard } from '../../../shared/ui/dnd/dndComponents';
 
 import { Header } from '../../../shared/ui';
 import { GreenButton, BrownButton, Button } from '../../../shared/ui/Button';
 import { ICONS, URL_ENUM } from '../../../shared/const';
 import { Input } from '../../../shared/ui/Input';
-import { createBoard, deleteBoard, editBoard, getBoards } from '../../../entities/boards/api/boardsApi';
+import { createBoard, deleteBoard, editBoard, getBoards, reorderBoard } from '../../../entities/boards/api/boardsApi';
 
 import styles from './styles.module.scss';
 
 export const Boards = () => {
     const dispatch = useDispatch();
     const { boards } = useSelector(state => state.board);
-
+    
+    const dndBoards = (boardId, newOrder) => {
+        dispatch(reorderBoard({ boardId, order: newOrder }))
+        .unwrap() 
+        .then(() => {     
+            dispatch(getBoards());
+        });
+    };
+ 
     const [showCreateBoard, setShowCreateBoard] = useState(false);
     const [formError, setFormError] = useState('');
     const [editId, setEditId] = useState(null);
@@ -119,30 +128,32 @@ export const Boards = () => {
                                     <Button type='submit' className={styles.btnSave}> Сохранить </Button>
                                 </div>
                             </form>
-                        )}   
+                        )}
                     </div>
-
+                    
                     <div className={styles.rightColumn}>
                         <div className={styles.existBoards}>
                             <h3>Мои доски</h3>
 
                             <div id="boardsList">
                                 {boards.map(board => (
-                                    <Link key={board.id} to={`${URL_ENUM.BOARD}/${board.id}/${encodeURIComponent(board.name)}`} 
-                                    className={styles.btnMove}>
-                                        
-                                        {board.name}
-                                        
-                                        <div className={styles.boardBtn}>
-                                            <i className={ICONS.EDIT} onClick={(e) => handleEditIcon(board, e)}></i>
-                                            <i className={ICONS.TRASH} onClick={(e) => handleDeleteIcon(board.id, e)}></i>
+                                    <SortDndBoard key={board.id} board={board} dndBoards={dndBoards} className={styles.btnMove}>
+                                        <Link to={`${URL_ENUM.BOARD}/${board.id}/${encodeURIComponent(board.name)}`}>
+
+                                            {board.name}
+                                                
+                                            <div className={styles.boardBtn}>
+                                                <i className={ICONS.EDIT} onClick={(e) => handleEditIcon(board, e)}></i>
+                                                <i className={ICONS.TRASH} onClick={(e) => handleDeleteIcon(board.id, e)}></i>
                                             </div>
-                                    </Link>
+                                        </Link>
+                                    </SortDndBoard>
                                 ))} 
                             </div>
                         </div>
                     </div>
                 </div>
+                
             </main>
         </>
     );

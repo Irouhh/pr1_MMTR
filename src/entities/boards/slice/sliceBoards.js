@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { createBoard, deleteBoard, editBoard, getBoards } from '../api/boardsApi';
+import { createBoard, deleteBoard, editBoard, getBoards, reorderBoard } from '../api/boardsApi';
 
 const initialState = {
     error: null,
@@ -58,6 +58,16 @@ extraReducers: (builder) => {
         state.boards = action.payload;
     })
     .addCase(getBoards.rejected, (state, action) => {
+        state.error = action.payload;
+    })
+
+    .addCase(reorderBoard.pending, (state) => {
+        state.error = null;
+    })
+    .addCase(reorderBoard.fulfilled, (state, action) => {
+        state.message = action.payload.message;
+    })
+    .addCase(reorderBoard.rejected, (state, action) => {
         state.error = action.payload;
     });
 }});

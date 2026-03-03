@@ -143,3 +143,15 @@
 .btnMove:hover, .btnMoveRepeat:hover {
     background-color: #e8d9b5;
 }
+
+.btnMove a {
+    color: #473f34;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.boardBtn i {
+    cursor: pointer;
+}

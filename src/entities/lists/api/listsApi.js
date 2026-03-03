@@ -69,3 +69,19 @@ export const getLists = createAsyncThunk('sliceList/getLists',
         return rejectWithValue(error.response?.data?.message || 'Ошибка');
     }
 });
+
+export const reorderList = createAsyncThunk('sliceList/reorderList',
+    async ({ boardId, listId, order }, thunkAPI) => {
+        const { rejectWithValue } = thunkAPI;
+        
+    try {
+        const response = await api.put('/list/reorderList', { boardId, listId, order });
+        
+        return {
+            boardId, listId, order, message: response.data.message
+        }
+        
+    } catch (error) {
+        return rejectWithValue(error.response?.data?.message || 'Ошибка');
+    }
+});

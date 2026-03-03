@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { createList, deleteList, editList, getLists } from '../api/listsApi';
+import { createList, deleteList, editList, getLists, reorderList } from '../api/listsApi';
 
 const initialState = {
     error: null,
@@ -58,6 +58,16 @@ extraReducers: (builder) => {
         state.lists = action.payload.lists;
     })
     .addCase(getLists.rejected, (state, action) => {
+        state.error = action.payload;
+    })
+
+    .addCase(reorderList.pending, (state) => {
+        state.error = null;
+    })
+    .addCase(reorderList.fulfilled, (state, action) => {
+        state.message = action.payload.message;
+    })
+    .addCase(reorderList.rejected, (state, action) => {
         state.error = action.payload;
     });
 }});

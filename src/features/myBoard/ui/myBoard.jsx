@@ -7,8 +7,10 @@ import { Header } from '../../../shared/ui';
 import { GreenButton, BrownButton, Button } from '../../../shared/ui/Button';
 import { ICONS } from '../../../shared/const';
 import { Input } from '../../../shared/ui/Input';
-import { createList, deleteList, editList, getLists } from '../../../entities/lists/api/listsApi';
-import { createTask, deleteTask, editTask, getTasks } from '../../../entities/tasks/api/tasksApi';
+import { createList, deleteList, editList, getLists, reorderList } from '../../../entities/lists/api/listsApi';
+import { createTask, deleteTask, editTask, getTasks, reorderTask } from '../../../entities/tasks/api/tasksApi';
+
+import {SortDndList, SortDndTask} from '../../../shared/ui/dnd/dndComponents';
 
 import styles from './styles.module.scss';
 
@@ -20,6 +22,30 @@ export const MyBoard = () => {
 
     // tasks
     const { tasks } = useSelector(state => state.task);
+
+    //dnd
+    const dndLists = (listId, boardId, newOrder) => {
+        if (listId) {
+            dispatch(reorderList({ listId, boardId, order: newOrder }))
+            .unwrap()
+            .then(() => {
+                dispatch(getLists({ boardId }));
+            })
+        }
+    };
+
+    const dndTasks = (taskId, newOrder, newListId, oldListId) => {
+        dispatch(reorderTask({ taskId, boardId, order: newOrder, newListId }))
+        .unwrap()
+        .then(() => {
+            if (oldListId) {
+                dispatch(getTasks({ boardId, listId: oldListId }));
+            }
+            if (newListId) {
+                dispatch(getTasks({ boardId, listId: newListId }));
+            }
+        })
+    };
 
     // tasks
     const [taskInputs, setTaskInputs] = useState({});
@@ -227,8 +253,7 @@ export const MyBoard = () => {
 
                                         <Input type="text" name='listName' value={formList.listName} 
                                         onChange={updateFormList} placeholder="Введите название..." required/>
-                                   
-                                    
+                                      
                                     <div className={styles.formButtons}>
                                         <BrownButton type="button" onClick={handleCancelListForm}> Отмена </BrownButton>
                                         <Button type='submit' className={styles.btnSave}> Сохранить </Button>
@@ -239,7 +264,7 @@ export const MyBoard = () => {
 
                         <div className={styles.existLists}>
                             {lists.map(list => (
-                                <div key={list.id} className={styles.listContainer}>
+                                <SortDndList key={list.id} list={list} boardId={boardId} dndLists={dndLists} className={styles.listContainer}>
                                     <div className={styles.listHead}>
                                         <h2>{list.name}</h2>
 
@@ -271,15 +296,15 @@ export const MyBoard = () => {
                                                 }
 
                                                 return (
-                                                <div key={task.id} className={styles.taskItem}>
-                                                    <i className={task.isActive ? ICONS.CHECKBOX : ICONS.CHECKBOX_CHECKED} onClick={() => changeTask(task)}></i>
-                                                    <span className={cx(styles.taskName, { [styles.lineThrough]: !task.isActive })}>{task.name}</span>
-                                                    
-                                                    <div className={styles.taskActions}>
-                                                        <i className={ICONS.EDIT} onClick={(e) => handleEditIconTask(task, e)}></i>
-                                                        <i className={ICONS.TRASH} onClick={(e) => handleDeleteIconTask(list.id, task.id, e)}></i>
-                                                    </div>
-                                                </div>
+                                                    <SortDndTask key={task.id} task={task} dndTasks={dndTasks} className={styles.taskItem}>
+                                                        <i className={task.isActive ? ICONS.CHECKBOX : ICONS.CHECKBOX_CHECKED} onClick={() => changeTask(task)}></i>
+                                                        <span className={cx(styles.taskName, { [styles.lineThrough]: !task.isActive })}>{task.name}</span>
+                                                        
+                                                        <div className={styles.taskActions}>
+                                                            <i className={ICONS.EDIT} onClick={(e) => handleEditIconTask(task, e)}></i>
+                                                            <i className={ICONS.TRASH} onClick={(e) => handleDeleteIconTask(list.id, task.id, e)}></i>
+                                                        </div>
+                                                    </SortDndTask>
                                                 );
                                             })
                                         }
@@ -293,7 +318,7 @@ export const MyBoard = () => {
                                             placeholder="Введите задачу..." className={styles.taskInput} required />
                                         </form>
                                     </div>
-                                </div>
+                                </SortDndList>
                             ))}
                         </div>
                     </div>

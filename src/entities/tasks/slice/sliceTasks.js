@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { createTask, deleteTask, editTask, getTasks } from '../api/tasksApi';
+import { createTask, deleteTask, editTask, getTasks, reorderTask } from '../api/tasksApi';
 
 const initialState = {
     error: null,
@@ -60,6 +60,16 @@ extraReducers: (builder) => {
         state.tasks = [...someTasks, ...action.payload.tasks];
     })
     .addCase(getTasks.rejected, (state, action) => {
+        state.error = action.payload;
+    })
+
+    .addCase(reorderTask.pending, (state) => {
+        state.error = null;
+    })
+    .addCase(reorderTask.fulfilled, (state, action) => {
+        state.message = action.payload.message;
+    })
+    .addCase(reorderTask.rejected, (state, action) => {
         state.error = action.payload;
     });
 }});
